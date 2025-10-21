@@ -8,8 +8,9 @@ const router = express.Router()
 router.get("/", async (req, res) => {
     try {
         // const test = await db.collection("discographies")
-        const test = await basicDataSchemaModel.find()
-        console.log(`Something was got in the try: ${test}`)
+        await basicDataSchemaModel.insertMany(discography)
+        const test = await basicDataSchemaModel.find({})
+        console.log(`Something was done in the try`)
         res.send(test)
     } catch (error) {
         console.log(error);
