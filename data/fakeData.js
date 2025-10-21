@@ -147,7 +147,7 @@ const discography = [
         albums: [
             {
                 name: "Soundtrack 7",
-                numberOfSongs: songs.length,
+                numberOfSongs: 5,
                 songs: [
                     {
                         name: "The Cleveland Song",
@@ -218,7 +218,7 @@ const discography = [
         albums: [
             {
                 name: "STELLARWORLD",
-                numberOfSongs: songs.length,
+                numberOfSongs: 4,
                 songs: [
                     {
                         name: "INSANO MODE",
@@ -248,7 +248,7 @@ const discography = [
 
             {
                 name: "NUTOPIA",
-                numberOfSongs: songs.length,
+                numberOfSongs: 5,
                 songs: [
                     {
                         name: "CONTEMPORARY JAM",

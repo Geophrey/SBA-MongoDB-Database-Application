@@ -5,8 +5,8 @@ import discography from "../seed/basicData.js"
 
 const router = express.Router()
 
-// http://localhost:7777/basic-discos/seed
-router.get("/seed", async (req, res) => {
+// http://localhost:7777/seed
+router.get("/", async (req, res) => {
     try {
         // const test = await db.collection("discographies")
         await basicDataSchemaModel.deleteMany({})
@@ -43,15 +43,15 @@ router.post("/seed", async (req, res) => {
 })
 
 // http://localhost:7777/basic-discos/all-discos
-router.get("/all-discos", async (req, res) => {
-    try {
-        const seed = await basicDataSchemaModel.find({})
-        console.log(`All data from the database is sent`)
-        res.send(seed)
-    } catch (error) {
-        console.log(error);
-        res.json({ error: error.message }).status(400);
-    }
-})
+// router.get("/all-discos", async (req, res) => {
+//     try {
+//         const seed = await basicDataSchemaModel.find({})
+//         console.log(`All data from the database is sent`)
+//         res.send(seed)
+//     } catch (error) {
+//         console.log(error);
+//         res.json({ error: error.message }).status(400);
+//     }
+// })
 
 export default router
