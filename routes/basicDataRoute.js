@@ -5,12 +5,17 @@ import discography from "../seed/basicData.js"
 
 const router = express.Router()
 
-router.get("/", async (req, res) => {
+router.get("/seed", async (req, res) => {
     try {
         // const test = await db.collection("discographies")
+        await basicDataSchemaModel.deleteMany({})
+        console.log(`All data has been deleted from the database`)
+
         await basicDataSchemaModel.insertMany(discography)
+        console.log(`Basic seed data has been added to the database`)
+
         const test = await basicDataSchemaModel.find({})
-        console.log(`Something was done in the try`)
+        console.log(`All data from the database is sent`)
         res.send(test)
     } catch (error) {
         console.log(error);
