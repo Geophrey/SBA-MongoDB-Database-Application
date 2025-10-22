@@ -5,14 +5,16 @@ import discography from "../data/fakeData.js";
 
 const router = express.Router();
 
-// http://localhost:7777/fakeData/Creation
-router.get("/Creation", async (req, res) => {
+// http://localhost:7777/fakeData/create-fake-data
+router.get("/create-fake-data", async (req, res) => {
     try {
         await basicDataSchemaModel.deleteMany({});
         console.log(`All data has been deleted from the database`);
 
         await basicDataSchemaModel.insertMany(discography);
         console.log(`Basic seed data has been added to the database`);
+
+        // await basicDataSchemaModel.index({ name: 1 })
 
         const fakeData = await basicDataSchemaModel.find({});
         console.log(`All data from the database is sent`);
@@ -22,6 +24,38 @@ router.get("/Creation", async (req, res) => {
         res.json({ error: error.message }).status(400);
     }
 });
+
+router.post("/", (req, res) => {
+    try {
+        
+    } catch (error) {
+        
+    }
+})
+
+// http://localhost:7777/fakeData/delete-all
+router.delete("/delete-all", async (req, res) => {
+    try {
+        await basicDataSchemaModel.deleteMany({});
+        console.log(`All data has been deleted from the database`);
+        //res.send(basicDataSchemaModel.find({}))
+    } catch (error) {
+        console.log(error);
+        res.json({ error: error.message }).status(400);
+    }
+})
+
+// http://localhost:7777/fakeData/delete-data/
+router.delete("/delete-data/:artist", async (req, res) => {
+    try {
+        await basicDataSchemaModel.deleteOne({name: req.params.artist})
+        console.log(`Artist, "${req.params.artist}" data has been deleted`);
+    } catch (error) {
+        console.log(error);
+        res.json({ error: error.message }).status(400);
+    }
+})
+
 
 // router.post("/seed", async (req, res) => {
 //     try {
